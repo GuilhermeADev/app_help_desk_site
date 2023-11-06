@@ -44,12 +44,9 @@
                                     <div class="form-group">
                                         <label>Token</label>
                                         <div class="input-group">
-                                            <input name="token" type="text" class="form-control" placeholder="Token"
-                                                disabled>
+                                            <input name="token" type="text" class="form-control" placeholder="Token" readonly>
                                         </div>
                                     </div>
-
-                                    
 
                                     <div class="form-group">
                                         <label>Digite o e-mail da solicitação</label>
@@ -58,8 +55,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Título</label>
-                                        <input name="titulo" type="text" class="form-control" placeholder="Título">
+                                        <label>Escola</label>
+                                        <input name="titulo" type="text" class="form-control" placeholder="Escola">
                                     </div>
 
                                     <div class="form-group">

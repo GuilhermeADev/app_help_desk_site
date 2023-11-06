@@ -55,13 +55,13 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Escola</label>
-                                        <input name="titulo" type="text" class="form-control" placeholder="Escola">
+                                        <label>Titulo</label>
+                                        <input name="titulo" type="text" class="form-control" placeholder="Titulo">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Assunto</label>
-                                        <select name="assunto" class="form-control">
+                                        <select id="assunto" name="assunto" class="form-control">
                                             <option>Toner/Impressora</option>
                                             <option>Hardware</option>
                                             <option>Software</option>
@@ -80,7 +80,7 @@
                                         </div>
 
                                         <div class="col-6">
-                                            <button class="btn btn-lg btn-info btn-block" type="submit">Enviar</button>
+                                            <button id="submit" class="btn btn-lg btn-info btn-block" type="submit">Enviar</button>
                                         </div>
                                     </div>
                                 </form>
@@ -92,6 +92,63 @@
             </div>
         </div>
     </div>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBKQ-TRXGmSGcPLeFgkSfrzpoKLmMWnXRo",
+      authDomain: "projeto-60c79.firebaseapp.com",
+      projectId: "projeto-60c79",
+      storageBucket: "projeto-60c79.appspot.com",
+      messagingSenderId: "77925391289",
+      appId: "1:77925391289:web:9cdadfcac168b15e04f468",
+      measurementId: "G-P01FG7GKG2"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    // Obtenha uma referência para o botão de envio
+    const enviarButton = document.getElementById('submit');
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function (event) {
+    event.preventDefault(); 
+        // Obtenha os valores do campo "token" e "para" do formulário
+        const email = document.querySelector('[name="para"]').value;
+        const titulo = document.querySelector('[name="titulo"]').value;
+        const mensagem = document.querySelector('[name="mensagem"]').value;
+        const token = document.querySelector('[name="token"]').value;
+        const assunto = document.getElementById('assunto').value;
+
+
+        // Referência para onde você deseja adicionar dados no Firebase Realtime Database
+        const dataRef = ref(database, titulo);
+
+        // Dados que você deseja adicionar
+        const newData = {
+            email: email,
+            titulo: titulo,
+            mensagem: mensagem,
+            assunto: assunto,
+            token:token
+        };
+
+        // Adicionando dados ao Firebase Realtime Database
+        set(dataRef, newData)
+            .then(() => {
+                console.log("Dados adicionados com sucesso.");
+            })
+            .catch((error) => {
+                console.error("Erro ao adicionar dados:", error);
+            });
+    });
+
+
+</script>
 </body>
+
+
 
 </html>

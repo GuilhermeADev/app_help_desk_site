@@ -39,7 +39,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <form method="post" action="processa_envio.php" method="post">
+                                <form method="post">
                                     
                                     <div class="form-group">
                                         <label>Token</label>
@@ -55,8 +55,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Titulo</label>
-                                        <input name="titulo" type="text" class="form-control" placeholder="Titulo">
+                                        <label>Escola</label>
+                                        <input name="escola" type="text" class="form-control" placeholder="Escola">
                                     </div>
 
                                     <div class="form-group">
@@ -93,7 +93,7 @@
         </div>
     </div>
 
-<script type="module">
+    <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
     import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
 
@@ -117,19 +117,19 @@
     event.preventDefault(); 
         // Obtenha os valores do campo "token" e "para" do formulário
         const email = document.querySelector('[name="para"]').value;
-        const titulo = document.querySelector('[name="titulo"]').value;
+        const escola = document.querySelector('[name="escola"]').value;
         const mensagem = document.querySelector('[name="mensagem"]').value;
         const token = document.querySelector('[name="token"]').value;
         const assunto = document.getElementById('assunto').value;
 
 
         // Referência para onde você deseja adicionar dados no Firebase Realtime Database
-        const dataRef = ref(database, titulo);
+        const dataRef = ref(database, token);
 
         // Dados que você deseja adicionar
         const newData = {
             email: email,
-            titulo: titulo,
+            escola: escola,
             mensagem: mensagem,
             assunto: assunto,
             token:token
@@ -143,7 +143,10 @@
             .catch((error) => {
                 console.error("Erro ao adicionar dados:", error);
             });
-    });
+        });
+            
+    // Dados que você deseja enviar para o PHP
+
 
 
 </script>

@@ -66,8 +66,8 @@ try {
     $mail->isSMTP();                                            
     $mail->Host       = 'smtp.gmail.com';                    
     $mail->SMTPAuth   = true;                                   
-    $mail->Username   = '';                     //COLOCAR O EMAIL DA PREFEITURA
-    $mail->Password   = '';                               //COLOCAR A SENHA PARA CONFIGURAR O EMAIL DA PREFEITUR
+    $mail->Username   = 'infocentroseme@gmail.com';                     //COLOCAR O EMAIL DA PREFEITURA
+    $mail->Password   = 'qkwd gfpa fxch luuu';                          //COLOCAR A SENHA PARA CONFIGURAR O EMAIL DA PREFEITUR
     $mail->SMTPSecure = 'tls';            
     $mail->Port       = '587';                                   
 

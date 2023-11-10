@@ -72,13 +72,13 @@ try {
     $mail->Port       = '587';                                   
 
     //Recipients
-    $mail->setFrom('abed400canal@gmail.com', 'Informatica Prefeitura de Ibirite');
+    $mail->setFrom('infocentroseme@gmail.com', 'Informatica Prefeitura de Ibirite');
     $mail->addAddress($mensagem->__get('para'));    
      //Add a recipient
 
     //Content
     $mail->isHTML(true);
-    $mail->Subject = $_POST['assunto'] . ' - ' . $_POST['titulo'];
+    $mail->Subject = $_POST['assunto'] . ' - ' . $_POST['escola'];
     $mail->Body = '<html>
     <body>
         <p>Seu chamado foi aberto com sucesso! Em breve atenderemos sua solicitação.</p>
@@ -95,11 +95,11 @@ $mensagem->status['descricao_status'] = 1;
 
 
 
-$mail->addAddress('', 'Prefeitura de Ibirité'); // COLOCAR O E-MAIL DA PREFEITURA PARA RECEBER OS CHAMADOS
+$mail->addAddress('infocentroseme@gmail.com', 'Prefeitura de Ibirité'); // COLOCAR O E-MAIL DA PREFEITURA PARA RECEBER OS CHAMADOS
 
 
 $mail->isHTML(true);
-$mail->Subject = 'Novo Chamado Aberto - ' . $_POST['assunto'] . ' - ' . $_POST['titulo'];
+$mail->Subject = 'Novo Chamado Aberto - ' . $_POST['assunto'] . ' - ' . $_POST['escola'];
 $mail->Body = '<html>
     <body>
         <p>Foi aberto um novo chamado com a seguinte descrição:</p>

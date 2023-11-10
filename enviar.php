@@ -40,23 +40,68 @@
                         <div class="row">
                             <div class="col">
                                 <form method="post">
-                                    
+
                                     <div class="form-group">
                                         <label>Token</label>
                                         <div class="input-group">
-                                            <input name="token" type="text" class="form-control" placeholder="Token" readonly>
+                                            <input name="token" type="text" class="form-control" placeholder="Token"
+                                                readonly>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label>Digite o e-mail da solicitação</label>
-                                        <input name="para" type="text" class="form-control"
-                                            placeholder="Solicitação">
+                                        <input name="para" type="text" class="form-control" placeholder="Solicitação">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Escola</label>
-                                        <input name="escola" type="text" class="form-control" placeholder="Escola">
+                                        <select id="escola" name="escola" class="form-control">
+                                            <option>CEI do Bairro Águia Dourada</option>
+                                            <option>CEI do Bairro Jardim das Rosas</option>
+                                            <option> CEI DO BAIRRO ÁGUIA DOURADA </option>
+                                            <option> CEI DO BAIRRO JARDIM DAS ROSAS </option>
+                                            <option> CEI DO BAIRRO PALMEIRAS </option>
+                                            <option> CEI DO BAIRRO SERRA DOURADA </option>
+                                            <option> CEI DO BAIRRO SOL NASCENTE </option>
+                                            <option> CEI PROFESSORA HELEN DE ABREU (MADUREIRA) </option>
+                                            <option> CEI FAZENDINHA DO GUINHO </option>
+                                            <option> E. M. PRÓ-INFÂNCIA DO JARDIM MONTANHÊS </option>
+                                            <option> CENTRO SOLIDÁRIO DE EDUCAÇÃO INFANTIL </option>
+                                            <option> E. M. PRÓ-INFÂNCIA DO BAIRRO APARECIDA </option>
+                                            <option> E. M. PRÓ- INFÂNCIA DO BAIRRO SÃO PEDRO </option>
+                                            <option> CEI CAIQUINHO </option>
+                                            <option> E. M. BONEQUINHO DOCE </option>
+                                            <option> E. M. CORONEL DUVAL DE BARROS </option>
+                                            <option> E. M. CRISTIANO PACÍFICO FERREIRA </option>
+                                            <option> E. M. DA VILA IDEAL/ SERRA DOURADA </option>
+                                            <option> EJA VILA IDEAL </option>
+                                            <option> E. M. DE BARREIRINHO </option>
+                                            <option> E. M. DO BAIRRO ÁGUIA DOURADA </option>
+                                            <option> E. M. DO BAIRRO ALVORADA </option>
+                                            <option> E. M. DO BAIRRO DUVAL DE BARROS (MADUREIRA) </option>
+                                            <option> E. M. DO BAIRRO JARDIM DAS ROSAS </option>
+                                            <option> E. M. PROFESSORA PETRINA (JARDIM MONTANHÊS) </option>
+                                            <option> E. M. DO BAIRRO JARDIM MONTREAL/OURO NEGRO </option>
+                                            <option> E. M. DO BAIRRO MORADA DA SERRA </option>
+                                            <option> E. M. DO BAIRRO PALMEIRAS </option>
+                                            <option> E. M. DO BAIRRO PETROVALE </option>
+                                            <option> E. M. DO BAIRRO SERRA DOURADA </option>
+                                            <option> E. M. DO BAIRRO SOL NASCENTE </option>
+                                            <option> PRO INFÂNCIA JARDIM MONTREAL (OURO NEGRO) </option>
+                                            <option> E. M. MARIA DAS MERCÊS AGUIAR (CRISTO) </option>
+                                            <option> E. M. MARIA JOSÉ CAMPOS DIAS (ROLA MOÇA) </option>
+                                            <option> E. M. MARIA JOSÉ DE AGUIAR </option>
+                                            <option> E. M. PREFEITO JOSÉ WANDERLEY </option>
+                                            <option> E. M. PROF.ª CARMELITA C. GARCIA - CAIC </option>
+                                            <option> E. M. PROF.ª MARIA HELENA DE AGUILAR </option>
+                                            <option> E. M. PROF.ª MARIA MARTINS DE MORAES (CASCATA) </option>
+                                            <option> E. M. PROF.ª MARINETE DAMASCENO PINHEIRO </option>
+                                            <option> E. M SAMBÓDROMO </option>
+                                            <option> CAMPUS IFMG </option>
+                                            <option> CABI </option>
+                                            <option> ASSISTENCIA AO EDUCANDO </option>
+                                        </select>
                                     </div>
 
                                     <div class="form-group">
@@ -80,7 +125,8 @@
                                         </div>
 
                                         <div class="col-6">
-                                            <button id="submit" class="btn btn-lg btn-info btn-block" type="submit">Enviar</button>
+                                            <button id="submit" class="btn btn-lg btn-info btn-block"
+                                                type="submit">Enviar</button>
                                         </div>
                                     </div>
                                 </form>
@@ -95,23 +141,23 @@
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     
     <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
-    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyBKQ-TRXGmSGcPLeFgkSfrzpoKLmMWnXRo",
-      authDomain: "projeto-60c79.firebaseapp.com",
-      projectId: "projeto-60c79",
-      storageBucket: "projeto-60c79.appspot.com",
-      messagingSenderId: "77925391289",
-      appId: "1:77925391289:web:9cdadfcac168b15e04f468",
-      measurementId: "G-P01FG7GKG2"
-    };
+        const firebaseConfig = {
+            apiKey: "AIzaSyBKQ-TRXGmSGcPLeFgkSfrzpoKLmMWnXRo",
+            authDomain: "projeto-60c79.firebaseapp.com",
+            projectId: "projeto-60c79",
+            storageBucket: "projeto-60c79.appspot.com",
+            messagingSenderId: "77925391289",
+            appId: "1:77925391289:web:9cdadfcac168b15e04f468",
+            measurementId: "G-P01FG7GKG2"
+        };
 
-    const app = initializeApp(firebaseConfig);
-    const database = getDatabase(app);
-    // Obtenha uma referência para o botão de envio
-    const enviarButton = document.getElementById('submit');
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        // Obtenha uma referência para o botão de envio
+        const enviarButton = document.getElementById('submit');
 
     const form = document.querySelector('form');
     form.addEventListener('submit', function (event) {
@@ -122,8 +168,11 @@
         const mensagem = document.querySelector('[name="mensagem"]').value;
         const token = document.querySelector('[name="token"]').value;
         const assunto = document.getElementById('assunto').value;
+
+
         // Referência para onde você deseja adicionar dados no Firebase Realtime Database
         const dataRef = ref(database, token);
+
         // Dados que você deseja adicionar
         const newData = {
             email: email,
@@ -132,6 +181,7 @@
             assunto: assunto,
             token:token
         };
+
         // Adicionando dados ao Firebase Realtime Database
         set(dataRef, newData)
             .then(() => {
@@ -141,29 +191,11 @@
                 console.error("Erro ao adicionar dados:", error);
             });
         });
-        </script>
+            
+    // Dados que você deseja enviar para o PHP
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.0/dist/email.min.js">
-    (function() {
-    emailjs.init("kpQChElZCqalT0Mej"); //please encrypted user id for malicious attacks
-  })();
 
-    var params={
-        sendername: "arthurafonso730@gmail.com",
-        to:         "arthurafonso730@gmail.com",
-        subject:    "arthurafonso730@gmail.com",
-        message:    "arthurafonso730@gmail.com",
-        reply_to:   "arthurafonso730@gmail.com"
-    }
 
-    var serviceID="service_yd8su9o"
-    var templateID="template_dyxylu3"
-
-    emailjs.send(serviceID, templateID, params)
-    .then(res=>{
-        alert("Enviado com sucesso");
-    }
-    )
 </script>
 </body>
 

@@ -92,7 +92,8 @@
             </div>
         </div>
     </div>
-
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    
     <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
     import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
@@ -121,11 +122,8 @@
         const mensagem = document.querySelector('[name="mensagem"]').value;
         const token = document.querySelector('[name="token"]').value;
         const assunto = document.getElementById('assunto').value;
-
-
         // Referência para onde você deseja adicionar dados no Firebase Realtime Database
         const dataRef = ref(database, token);
-
         // Dados que você deseja adicionar
         const newData = {
             email: email,
@@ -134,7 +132,6 @@
             assunto: assunto,
             token:token
         };
-
         // Adicionando dados ao Firebase Realtime Database
         set(dataRef, newData)
             .then(() => {
@@ -144,11 +141,29 @@
                 console.error("Erro ao adicionar dados:", error);
             });
         });
-            
-    // Dados que você deseja enviar para o PHP
+        </script>
 
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.0/dist/email.min.js">
+    (function() {
+    emailjs.init("kpQChElZCqalT0Mej"); //please encrypted user id for malicious attacks
+  })();
 
+    var params={
+        sendername: "arthurafonso730@gmail.com",
+        to:         "arthurafonso730@gmail.com",
+        subject:    "arthurafonso730@gmail.com",
+        message:    "arthurafonso730@gmail.com",
+        reply_to:   "arthurafonso730@gmail.com"
+    }
 
+    var serviceID="service_yd8su9o"
+    var templateID="template_dyxylu3"
+
+    emailjs.send(serviceID, templateID, params)
+    .then(res=>{
+        alert("Enviado com sucesso");
+    }
+    )
 </script>
 </body>
 

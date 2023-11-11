@@ -138,7 +138,6 @@
             </div>
         </div>
     </div>
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
     
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
@@ -196,6 +195,49 @@
 
 
 
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.0/dist/email.min.js"></script>
+<script type="text/javascript">
+(function() {
+    emailjs.init("kpQChElZCqalT0Mej"); //please encrypted user id for malicious attacks
+  })();
+    var serviceID="service_yd8su9o"
+    var templateID="template_dyxylu3"
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault(); 
+        //ENVIANDO E-MAIL PRO USUÁRIO
+        var params={//Para o usuário que mandou o e-mail
+            sendername: "arthurafonso730@gmail.com",
+            to: document.querySelector('[name="para"]').value, // Usando o e-mail obtido do campo 'para' do formulário
+            subject: document.querySelector('[name="escola"]').value, // Usando o assunto obtido do campo 'assunto' do formulário
+            message: "Você abriu um chamado de: "
+            +document.querySelector('[name="assunto"]').value
+            +". Em breve atenderemos sua solicitação!.\n Seu código é: "
+            +document.querySelector('[name="token"]').value // Usando a mensagem obtida do campo 'mensagem' do formulário
+        }
+        
+        emailjs.send(serviceID, templateID, params)//Enviando pro usuário
+
+        //ENVIANDO E-MAIL PRA INFORMÁTICA
+        params={//Para o usuário que mandou o e-mail
+            sendername: "arthurafonso730@gmail.com",
+            to:         "arthurafonso730@gmail.com", // Usando o e-mail obtido do campo 'para' do formulário
+            subject: document.querySelector('[name="escola"]').value, // Usando o assunto obtido do campo 'assunto' do formulário
+            message: "Um novo chamado foi aberto sobre:\n"
+            +document.querySelector('[name="assunto"]').value+"\n"
+            +document.querySelector('[name="mensagem"]').value 
+            +".\n o código é: \t"
+            +document.querySelector('[name="token"]').value // Usando a mensagem obtida do campo 'mensagem' do formulário
+        }
+
+        emailjs.send(serviceID, templateID, params)//Enviando pro usuário
+        .then(res=>{
+            alert("Enviado com sucesso");
+        }
+        )
+    });
 </script>
 </body>
 

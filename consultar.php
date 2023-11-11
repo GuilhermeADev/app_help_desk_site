@@ -44,7 +44,7 @@
     
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
-import { getDatabase, ref, get, onValue } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
+import { getDatabase, ref, get, onValue, remove } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBKQ-TRXGmSGcPLeFgkSfrzpoKLmMWnXRo",
@@ -94,11 +94,13 @@ get(rootRef)
                         resultadoDiv.className = "card-body"; // Adicione a classe ao contêiner
 
                         // Crie elementos HTML onde você deseja exibir os dados
-                        const escolaElement = document.createElement("h5");
-                        const problemaElement = document.createElement("h6");
+                        const tokenElement = document.createElement("h5");
+                        const escolaElement = document.createElement("h6");
+                        const problemaElement = document.createElement("h7");
                         const descricaoElement = document.createElement("p");
 
                         // Atualize os elementos HTML com os dados do Firebase
+                        tokenElement.textContent = `TOKEN: ${data.token}`;
                         escolaElement.textContent = `Escola: ${data.escola}`;
                         problemaElement.textContent = `Problema: ${data.assunto}`;
                         descricaoElement.textContent = `Descrição: ${data.mensagem}`;
@@ -120,27 +122,32 @@ get(rootRef)
                         iconeElement.style.height = '30px'; // Ajuste a altura
                         
                         iconeElement.addEventListener('click', function() {
-                        // Obtenha o nome do nó (código atual) associado a este elemento
+                            // Obtenha o nome do nó (código atual) associado a este elemento
                             const codigoAtual = nodeName; // Certifique-se de definir nodeName corretamente
 
                             // Crie uma referência para o nó que você deseja excluir
                             const nóParaExcluirRef = ref(database, codigoAtual);
 
                             // Use a função remove para excluir o nó
-                            set(nóParaExcluirRef, null)
+                            remove(nóParaExcluirRef, null)
                                 .then(() => {
                                     // O nó foi excluído com sucesso
-                                    alert(`Nó ${codigoAtual} foi excluído com sucesso.`);
+                                    alert(`Token ${codigoAtual} foi excluído com sucesso.`);
+
+                                    // Recarregue a página
+                                    location.reload();
                                 })
                                 .catch((error) => {
                                     // Ocorreu um erro ao excluir o nó
                                     console.error(`Erro ao excluir nó ${codigoAtual}: ${error}`);
                                 });
-                    });
+                        });
+
                         // Adicione a imagem de ícone ao canto inferior direito da cardDiv
                         cardBodyDiv.appendChild(iconeElement);
 
                         // Adicione os elementos ao bloco card
+                        cardBodyDiv.appendChild(tokenElement);
                         cardBodyDiv.appendChild(escolaElement);
                         cardBodyDiv.appendChild(problemaElement);
                         cardBodyDiv.appendChild(descricaoElement);

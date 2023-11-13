@@ -19,12 +19,12 @@
 
 <body>
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="home.php">
+        <a class="navbar-brand" href="index.html">
             <img src="imagens/logo-prefeitura.png" width="50" height="50" alt="Logo da Prefeitura">
         </a>
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link text-white" href="index.php">Sair</a>
+                <a class="nav-link text-white" href="index.html">Recarregar</a>
             </li>
         </ul>
     </nav>
@@ -121,7 +121,8 @@
 
                                     <div class="row mt-5">
                                         <div class="col-6">
-                                            <a class="btn btn-lg btn-dark btn-block" href="home.php">Voltar</a>
+                                            <a class="nav-link text-black" href="index.html">Recarregar</a>
+
                                         </div>
 
                                         <div class="col-6">
@@ -138,6 +139,49 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.0/dist/email.min.js"></script>
+    <script type="text/javascript">
+    (function() {
+        emailjs.init("kpQChElZCqalT0Mej"); //please encrypted user id for malicious attacks
+    })();
+        var serviceID="service_yd8su9o"
+        var templateID="template_dyxylu3"
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); 
+            //ENVIANDO E-MAIL PRO USUÁRIO
+            var params={//Para o usuário que mandou o e-mail
+                sendername: "arthurafonso730@gmail.com",
+                to: document.querySelector('[name="para"]').value, // Usando o e-mail obtido do campo 'para' do formulário
+                subject: document.querySelector('[name="escola"]').value, // Usando o assunto obtido do campo 'assunto' do formulário
+                message: "Você abriu um chamado de: "
+                +document.querySelector('[name="assunto"]').value
+                +". Em breve atenderemos sua solicitação!.\n Seu código é: "
+                +document.querySelector('[name="token"]').value // Usando a mensagem obtida do campo 'mensagem' do formulário
+            }
+            
+            emailjs.send(serviceID, templateID, params)//Enviando pro usuário
+
+            //ENVIANDO E-MAIL PRA INFORMÁTICA
+            params={//Para o usuário que mandou o e-mail
+                sendername: "arthurafonso730@gmail.com",
+                to:         "arthurafonso730@gmail.com", // Usando o e-mail obtido do campo 'para' do formulário
+                subject: document.querySelector('[name="escola"]').value, // Usando o assunto obtido do campo 'assunto' do formulário
+                message: "Um novo chamado foi aberto sobre:\n"
+                +document.querySelector('[name="assunto"]').value+"\n"
+                +document.querySelector('[name="mensagem"]').value 
+                +".\n o código é: \t"
+                +document.querySelector('[name="token"]').value // Usando a mensagem obtida do campo 'mensagem' do formulário
+            }
+
+            emailjs.send(serviceID, templateID, params)//Enviando pro usuário
+            .then(res=>{
+                alert("Enviado com sucesso");
+            }
+            )
+        });
+    </script>
     
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
@@ -191,54 +235,12 @@
             });
         });
             
-    // Dados que você deseja enviar para o PHP
+    // Dados que você deseja enviar para o html
 
 
 
 </script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.0/dist/email.min.js"></script>
-<script type="text/javascript">
-(function() {
-    emailjs.init("kpQChElZCqalT0Mej"); //please encrypted user id for malicious attacks
-  })();
-    var serviceID="service_yd8su9o"
-    var templateID="template_dyxylu3"
-    const form = document.querySelector('form');
 
-    form.addEventListener('submit', function (event) {
-        event.preventDefault(); 
-        //ENVIANDO E-MAIL PRO USUÁRIO
-        var params={//Para o usuário que mandou o e-mail
-            sendername: "arthurafonso730@gmail.com",
-            to: document.querySelector('[name="para"]').value, // Usando o e-mail obtido do campo 'para' do formulário
-            subject: document.querySelector('[name="escola"]').value, // Usando o assunto obtido do campo 'assunto' do formulário
-            message: "Você abriu um chamado de: "
-            +document.querySelector('[name="assunto"]').value
-            +". Em breve atenderemos sua solicitação!.\n Seu código é: "
-            +document.querySelector('[name="token"]').value // Usando a mensagem obtida do campo 'mensagem' do formulário
-        }
-        
-        emailjs.send(serviceID, templateID, params)//Enviando pro usuário
-
-        //ENVIANDO E-MAIL PRA INFORMÁTICA
-        params={//Para o usuário que mandou o e-mail
-            sendername: "arthurafonso730@gmail.com",
-            to:         "arthurafonso730@gmail.com", // Usando o e-mail obtido do campo 'para' do formulário
-            subject: document.querySelector('[name="escola"]').value, // Usando o assunto obtido do campo 'assunto' do formulário
-            message: "Um novo chamado foi aberto sobre:\n"
-            +document.querySelector('[name="assunto"]').value+"\n"
-            +document.querySelector('[name="mensagem"]').value 
-            +".\n o código é: \t"
-            +document.querySelector('[name="token"]').value // Usando a mensagem obtida do campo 'mensagem' do formulário
-        }
-
-        emailjs.send(serviceID, templateID, params)//Enviando pro usuário
-        .then(res=>{
-            alert("Enviado com sucesso");
-        }
-        )
-    });
-</script>
 </body>
 
 

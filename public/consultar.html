@@ -14,25 +14,19 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-dark bg-info">
         <a class="navbar-brand" href="index.html">
-            <img src="../imagens/logo-prefeitura.png" width="50" height="50" alt="Logo da Prefeitura">
+            <img src="https://firebasestorage.googleapis.com/v0/b/projeto-60c79.appspot.com/o/logo-prefeitura.png?alt=media&token=cc342bb3-a2b1-4660-beee-bcb80407c13a" width="50" height="50" alt="Logo da Prefeitura">
         </a>
-        <!-- <ul class="navbar-nav">
+        <ul class="navbar-nav ml-auto ">
             <li class="nav-item">
-                <a class="nav-link text-white" href="index.html">Sair</a>
+                <img src="https://firebasestorage.googleapis.com/v0/b/projeto-60c79.appspot.com/o/email.png?alt=media&token=686d5fd5-feed-4faa-afd1-158db978c9f8" class="img-fluid" width="50" height="50">
             </li>
-        </ul> -->
+        </ul>
     </nav>
-    <div id="resultados"></div>
-<!-- 
-    <div class="row mt-5 ">
-        <div class="col-6">
-           <a class="btn btn-lg btn-dark btn-block" style="max-width: 150px;" href="/public/index.html">Voltar</a>
-        </div>
-    </div> -->
-          
     
+    <div id="resultados"></div>
+
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
 import { getDatabase, ref, get, onValue, remove } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
@@ -104,13 +98,13 @@ get(rootRef)
 
                         const iconeElement = document.createElement("img");
 
-                        iconeElement.src = '../../imagens/lixo.jpg'; // Caminho para a primeira imagem do ícone
+                        iconeElement.src = 'https://firebasestorage.googleapis.com/v0/b/projeto-60c79.appspot.com/o/lixo.jpg?alt=media&token=652ccdba-f33c-44e6-97ae-80c72771d1b5'; // Caminho para a primeira imagem do ícone
                         iconeElement.className = 'icone-img'; // Classe de estilização para o ícone
                         iconeElement.style.position = 'absolute';
-                        iconeElement.style.bottom = '5px'; // Ajuste a posição vertical
-                        iconeElement.style.right = '5px'; // Ajuste a posição horizontal
-                        iconeElement.style.width = '30px'; // Ajuste a largura
-                        iconeElement.style.height = '30px'; // Ajuste a altura
+                        iconeElement.style.bottom = '10px'; // Ajuste a posição vertical
+                        iconeElement.style.right = '10px'; // Ajuste a posição horizontal
+                        iconeElement.style.width = '40px'; // Ajuste a largura
+                        iconeElement.style.height = '40px'; // Ajuste a altura
                         
                         iconeElement.addEventListener('click', function() {
                             // Obtenha o nome do nó (código atual) associado a  este elemento

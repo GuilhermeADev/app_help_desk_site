@@ -140,17 +140,17 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.0/dist/email.min.js"></script>
     <script type="text/javascript">
     (function() {
-        emailjs.init("kpQChElZCqalT0Mej"); //please encrypted user id for malicious attacks
+        emailjs.init("FOJJhnXq_t7Eq5oNZ"); //please encrypted user id for malicious attacks
     })();
-        var serviceID="service_yd8su9o"
-        var templateID="template_dyxylu3"
+        var serviceID="service_bf2r1j8"
+        var templateID="template_8uvkk7k"
         const form = document.querySelector('form');
 
         form.addEventListener('submit', function (event) {
             event.preventDefault(); 
             //ENVIANDO E-MAIL PRO USUÁRIO
             var params={//Para o usuário que mandou o e-mail
-                sendername: "arthurafonso730@gmail.com",
+                sendername: "infocentroseme@gmail.com",
                 to: document.querySelector('[name="para"]').value, // Usando o e-mail obtido do campo 'para' do formulário
                 subject: document.querySelector('[name="escola"]').value, // Usando o assunto obtido do campo 'assunto' do formulário
                 message: "Você abriu um chamado de: "
@@ -163,8 +163,8 @@
 
             //ENVIANDO E-MAIL PRA INFORMÁTICA
             params={//Para o usuário que mandou o e-mail
-                sendername: "arthurafonso730@gmail.com",
-                to:         "arthurafonso730@gmail.com", // Usando o e-mail obtido do campo 'para' do formulário
+                sendername: "infocentroseme@gmail.com",
+                to:         "infocentroseme@gmail.com", // Usando o e-mail obtido do campo 'para' do formulário
                 subject: document.querySelector('[name="escola"]').value, // Usando o assunto obtido do campo 'assunto' do formulário
                 message: "Um novo chamado foi aberto sobre:\n"
                 +document.querySelector('[name="assunto"]').value+"\n"
